@@ -1,5 +1,5 @@
-#include "parser.hpp"
+#include "program_options.hpp"
 
-int main() {
+auto main() -> int {
   return 0;
 }
