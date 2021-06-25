@@ -1,15 +1,15 @@
-#ifndef TAPPO_ARGS_HPP_
-#define TAPPO_ARGS_HPP_
+#ifndef TAPPO_ARG_HPP_
+#define TAPPO_ARG_HPP_
 
-#include <optional>
-#include <string>
+#include "opt.hpp"
 
 namespace tappo {
 
 class ArgBase {
 public:
-  // The default constructor.
-  ArgBase() = default;
+  // The default constructor is explicitly deleted.
+  // An argument must be declared with options (descriptions are optional).
+  ArgBase() = delete;
 
   // Accessors/mutators.
   const auto& desc() const { return desc_; }
@@ -23,4 +23,4 @@ protected:
 
 } // namespace tappo
 
-#endif // TAPPO_ARGS_HPP_
+#endif // TAPPO_ARG_HPP_
