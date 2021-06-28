@@ -40,12 +40,9 @@ struct hash<tappo::Option> {
   std::size_t operator()(tappo::Option const& opt) const noexcept {
     std::size_t h1 = std::hash<std::optional<char> >{ }(opt.sopt());
     std::size_t h2 = std::hash<std::optional<std::string> >{ }(opt.lopt());
-    std::size_t seed = 0;
-    tappo::hash::hash_combine(seed, h1);
-    tappo::hash::hash_combine(seed, h2);
     // The combination number h1 ^ (h2 << 1) is also available.
     // Refer to examples in https://en.cppreference.com/w/cpp/utility/hash
-    return seed;
+    return tappo::hash::hash_combine(h1, h2);
   }
 };
 
